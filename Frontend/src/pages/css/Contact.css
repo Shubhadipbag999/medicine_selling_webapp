@@ -1,0 +1,118 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+} */
+.contact {
+  position: relative;
+  min-height: 87vh;
+  width: 100vw;
+  padding: 10px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(163, 236, 248);
+  overflow-y: hidden;
+}
+.contact .content {
+  max-width: 50px;
+  text-align: center;
+}
+.contact .content h2 {
+  font-size: 36px;
+  font-weight: 400;
+  color: rebeccapurple;
+}
+
+.containerDiv {
+  width: 80%;
+  height: 74vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  background-color: rgb(180, 243, 175);
+  box-shadow: 24px 24px 30px #6d8dad;
+  border-radius: 15px;
+}
+.containerDiv .contactinfo {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.containerDiv .contactinfo .box {
+  position: relative;
+  padding: 40px 0px;
+  display: flex;
+}
+.containerDiv .contactinfo .box .icon {
+  min-width: 10px;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 5px;
+}
+.containerDiv .contactinfo .box .text {
+  display: flex;
+  margin-left: 10px;
+  flex-direction: column;
+  font-size: 300;
+}
+.containerDiv .contactinfo .box .text h3 {
+  font-size: 500;
+}
+.contactfrom {
+  width: 300px;
+  padding: 50px;
+}
+.contactfrom h2 {
+  font-size: 25px;
+  font-weight: 600;
+}
+.contactfrom .inputbox {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+.contactfrom .inputbox input,
+.contactfrom .inputbox textarea {
+  width: 100%;
+  padding: 16px 0;
+  font-size: 15px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 2px solid #333;
+  outline: none;
+  resize: none;
+  background-color: rgb(180, 243, 175);
+}
+.contactfrom .inputbox span {
+  position: absolute;
+  left: 0;
+  padding: 5px 0;
+  font-size: 15px;
+  margin: 10px 0;
+  pointer-events: none;
+  color: #666;
+}
+.contactfrom .inputbox input:focus ~ span,
+.contactfrom .inputbox input:valid ~ span,
+.contactfrom .inputbox textarea:focus ~ span,
+.contactfrom .inputbox textarea:focus ~ valid {
+  color: #e91e63;
+  font-size: 12px;
+  transform: (-20px);
+}
+.contactfrom .inputbox input[type="submit"] {
+  width: 100px;
+  background: #00bcd4;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+}

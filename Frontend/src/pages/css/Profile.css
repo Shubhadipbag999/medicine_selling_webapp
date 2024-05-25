@@ -1,0 +1,38 @@
+.profileMainDiv {
+  height: 87vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: aliceblue;
+}
+
+.profileImage {
+  height: 200px;
+  border-radius: 100px;
+  margin-bottom: 5vh;
+}
+
+.ownerName {
+  font-size: 33px !important;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-bottom: 2vh !important;
+}
+
+.remainingData {
+  font-size: 20px !important;
+  margin-bottom: 2vh;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.logoutNow {
+  margin-top: 2vh;
+  height: 35px;
+  width: 160px;
+  cursor: pointer;
+  background-color: aquamarine;
+  border-radius: 20px;
+  font-weight: bold;
+  border: none;
+}

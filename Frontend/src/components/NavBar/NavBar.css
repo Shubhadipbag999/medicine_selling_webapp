@@ -1,0 +1,84 @@
+.navbar {
+  height: 13vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+.navbar-logo {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.navbar-logo img {
+  height: 10vh;
+  margin-right: 20px;
+}
+
+.nav-manu {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style-type: none;
+}
+.nav-manu li {
+  font-size: 17px;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.link {
+  color: azure;
+  text-decoration: none;
+}
+.nav-manu li:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nav-login-cart {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-button {
+  width: 130px;
+  height: 37px;
+  border-radius: 20px;
+  background-color: rgba(250, 246, 246, 0.7);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.login-button:hover {
+  background-color: rgba(250, 246, 246, 1);
+}
+.cartIcon {
+  height: 5vh;
+  /* background-color: white; */
+  margin-left: 2vw;
+  cursor: pointer;
+}
+
+.cart-count {
+  font-weight: bold;
+  color: black;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: chartreuse;
+  border-radius: 100px;
+  padding: 5px 10px 5px 10px;
+  margin-left: 0.5vw;
+}
+
+hr {
+  border-top: 2.5px solid red;
+  margin-top: 0.7vh;
+}

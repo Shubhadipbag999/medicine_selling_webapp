@@ -1,0 +1,82 @@
+.ItemComponent {
+  height: 330px;
+  width: 210px;
+  min-width: 210px;
+  /* background-color: aqua; */
+  border: 0.1px solid black;
+  margin: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(247, 247, 247);
+}
+.ItemComponent:hover {
+  box-shadow: 6px 7px 8px #6d8dad;
+  /* border: none; */
+}
+
+.itemimage {
+  height: 200px;
+  width: 210px;
+  margin-top: -10px;
+  /* width: 25vw; */
+}
+
+.itemName {
+  margin: 0px 0px 0 4px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.itemPrice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .itemOldPrice{
+  
+} */
+.cross {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.cross::before,
+.cross::after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.cross::after {
+  border-bottom: 2px solid rgb(243, 0, 0);
+  -webkit-transform: skewY(190deg);
+  transform: skewY(0deg);
+}
+
+.itemNewPrice {
+  font-size: 23px;
+  font-weight: bold;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.addToCartBTN {
+  margin-top: 0.5vh;
+  height: 36px;
+  width: 195px;
+  align-items: center;
+  margin-bottom: 4px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: yellow;
+  border: none;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: medium;
+}

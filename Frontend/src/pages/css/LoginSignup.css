@@ -1,0 +1,86 @@
+.loginMainDiv {
+  height: 87vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: rgba(248, 184, 216, 0.7); */
+}
+
+.loginContainer {
+  padding: 15px;
+  height: 70vh;
+  width: 35vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.passwordDiv {
+  height: 6vh;
+  width: 85%;
+  text-align: center;
+  /* background-color: aqua; */
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
+
+.eyeIcon {
+  cursor: pointer;
+}
+
+.inputBoxPass {
+  height: 6vh;
+  width: 92%;
+  text-align: center;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.inputBoxNumber {
+  height: 6vh;
+  width: 85%;
+  text-align: center;
+  outline: none;
+}
+
+.inputBox {
+  height: 6vh;
+  width: 85%;
+  text-align: center;
+  outline: none;
+}
+
+.loginSignupText {
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.already {
+  display: flex;
+  font-size: 14px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.already u {
+  margin-left: 0.7vw;
+  cursor: pointer;
+}
+
+.loginSignupBTN {
+  height: 6vh;
+  width: 85%;
+  text-align: center;
+  background-color: orangered;
+  border: none;
+  color: white;
+  cursor: pointer;
+}

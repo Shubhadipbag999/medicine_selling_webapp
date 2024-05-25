@@ -1,0 +1,39 @@
+.allMedicineComponentMain {
+  height: 87vh;
+  width: 100vw;
+  display: flex;
+  /* align-items: center;
+  justify-content: center; */
+  flex-direction: column;
+
+  background-color: aliceblue;
+}
+
+.medicineByFilter {
+  height: 7vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  flex-wrap: wrap;
+}
+
+.allMedicineOnlyDiv {
+  box-sizing: border-box;
+  height: 87vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+}
+.filterNow {
+  height: 30px;
+  width: 100px;
+  border-radius: 10px;
+  margin: 5px;
+  cursor: pointer;
+  border: none;
+}

@@ -1,0 +1,54 @@
+.addNewProduct {
+  height: 87vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(248, 184, 216, 0.7);
+}
+
+.addproductForm {
+  padding: 15px;
+  height: 80vh;
+  width: 30vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.addProductBTN {
+  height: 6vh;
+  width: 85%;
+  text-align: center;
+  background-color: orangered;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.ImageUploadiv {
+  height: 6vh;
+  width: 85%;
+  display: flex;
+}
+
+.inputfile {
+  height: inherit !important;
+  width: 60%;
+}
+
+.imageuploadBTN {
+  height: 5vh !important;
+  width: 40%;
+  background-color: rgba(0, 255, 21, 0.961);
+  border: none;
+  cursor: pointer;
+}
+
+.imageuploadBTN:hover {
+  background-color: rgba(0, 255, 21, 0.961);
+  font-weight: 600;
+}
