@@ -1,9 +1,10 @@
 import React from 'react'
 import "./css/Contact.css"
 import { toast } from 'react-toastify'
-
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
+    const nevigate = useNavigate()
     return (
         <div>
             <section className="contact">
@@ -54,7 +55,10 @@ const Contact = () => {
                                 <span>Type Your message....</span>
                             </div>
                             <div className="inputbox">
-                                <input type="submit" name="" value="send" onClick={() => toast.success("Message is send to admin")} />
+                                <input type="submit" name="" value="send" onClick={() => {
+                                    toast.success("Message is send to admin")
+                                    nevigate("/")
+                                }} />
                             </div>
                         </from>
                     </div>
