@@ -84,28 +84,85 @@
 .parentscarediv {
   height: 87vh;
   width: 100vw;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   display: flex;
   align-items: center;
   /* justify-content: center; */
   flex-direction: column;
-  background-color: aliceblue;
+  background-color: rgba(127, 218, 234, 0.532);
 }
 
 .parentscareFormdiv {
-  height: 40vh;
-  width: 50vw;
+  height: 37vh;
+  width: 40vw;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: rgba(17, 201, 205, 0.5);
-  margin-top: 3vh;
-  border-radius: 20px;
+  background-color: rgba(198, 71, 240, 0.404);
+  margin-top: 1vh;
+  /* border-radius: 20px; */
 }
+
+.allTask {
+  max-height: 270px;
+  height: 260px;
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-direction: column;
+  background-color: rgba(198, 71, 240, 0.404);
+  border-radius: 10px;
+  margin-top: 2vh;
+  overflow-y: scroll;
+  padding-top: 30px;
+}
+
+.parentscareData {
+  min-height: 7vh !important;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  font-size: 15px;
+  /* border-radius: 20px; */
+  margin-bottom: 1vh;
+}
+.parentscareData > span {
+  margin-right: 20px !important;
+  font-weight: bold;
+}
+
+.information {
+  width: 92%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+.alertDiv {
+  width: 8%;
+  height: 100%;
+  background-color: rgba(246, 79, 49, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.alertDiv:hover {
+  background-color: rgb(247, 55, 22);
+}
+
 .inputParents {
-  height: 7vh;
-  width: 60%;
+  height: 5vh;
+  width: 80%;
   text-align: center;
   border-radius: 10px;
   border: none;

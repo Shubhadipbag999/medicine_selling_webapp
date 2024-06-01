@@ -24,6 +24,7 @@ const Medicine = () => {
             <div className="nameDescriptionContainer">
                 <span className='productName'>{data.name}</span>
                 <span className='description'>{data.description}</span>
+                <h3 style={{ marginTop: "2vh" }}>Discount: {data.discount}%</h3>
                 <h2 className='productName'>Old Price : {data.old_price}</h2>
                 <span className='productNewPrice'>RS. {data.new_price}</span>
 

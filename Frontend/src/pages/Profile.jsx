@@ -21,7 +21,7 @@ const Profile = () => {
         <div className='profileMainDiv'>
             <img src="https://res.cloudinary.com/shubhadip/image/upload/v1716231251/dgyvapyww9khjxpumrun.png" alt="profile image"
                 className='profileImage' />
-            <span className='ownerName'>Name: {userData.name} {userData.owner ? <span>(Admin)</span> : <></>}</span>
+            <span className='ownerName'>Name: {userData.name} {userData.owner == "owner" ? <span>(Admin)</span> : <></>}</span>
             <span className='remainingData'>Age: {userData.age}</span>
             <span className='remainingData'>email: {userData.email}</span>
             <span className='remainingData'>Phone: {userData.phone}</span>

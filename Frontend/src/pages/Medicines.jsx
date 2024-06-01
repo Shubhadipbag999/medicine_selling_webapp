@@ -26,17 +26,12 @@ const Medicines = () => {
             <div className='allMedicineOnlyDiv'>
                 {
 
-                    catagory == "all" ? medicineData.map((item, i) => {
+                    medicineData ? medicineData.map((item, i) => {
 
 
                         return <Items key={i} id={item.id} image={item.image} name={item.name} new_price={item.new_price} old_price={item.old_price} />
 
-                    }) : medicineData.map((item, i) => {
-                        if (item.category == catagory) {
-
-                            return <Items key={i} id={item.id} image={item.image} name={item.name} new_price={item.new_price} old_price={item.old_price} />
-                        }
-                    })
+                    }) : <h1>Data Not Found</h1>
                 }
 
             </div>

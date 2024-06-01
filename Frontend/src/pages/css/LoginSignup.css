@@ -11,7 +11,7 @@
 
 .loginContainer {
   padding: 15px;
-  height: 70vh;
+  height: 74vh;
   width: 35vw;
   display: flex;
   align-items: center;
@@ -83,4 +83,13 @@
   border: none;
   color: white;
   cursor: pointer;
+}
+
+.isCompany {
+  display: flex;
+}
+
+.isCompany > p {
+  font-size: 14px;
+  margin-left: 20px;
 }

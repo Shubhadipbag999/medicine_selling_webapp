@@ -1,6 +1,13 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const parentscareSchema = new mongoose.Schema({
-    customerId: { type: Object }
+    userId: { type: String, required: true },
+    medicineName: { type: String, required: true },
+    time: { type: String, required: true },
+    relationType: { type: String, required: true },
+    mobileNumber: { type: Number, required: true }
 
 })
+
+
+module.exports = mongoose.model("ParentsCare", parentscareSchema) 

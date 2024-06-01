@@ -1,10 +1,48 @@
 const express = require('express');
+
 const router = express.Router();
+const Razorpay = require('razorpay');
 const Medicines = require("../modles/Medicines")
 const User = require("../modles/User")
+const crypto = require('crypto');
 const authMiddleware = require('../middlewares/authMiddleware');
 const Transaction = require("../modles/Transaction")
+const ParentsCare = require("../modles/ParentsCare")
 
+const razorpay = new Razorpay({
+    key_id: 'rzp_test_b3CFvAy9NYhkgt',
+    key_secret: 'd7ycsY5LMmn3YXzsvWDDiNfC',
+});
+
+router.post('/create-order', async (req, res) => {
+    const { amount, currency, receipt } = req.body;
+
+    try {
+        const options = {
+            amount: amount * 100, // amount in the smallest currency unit
+            currency,
+            receipt,
+        };
+        const order = await razorpay.orders.create(options);
+        res.status(200).json(order);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+router.post('/verify-payment', (req, res) => {
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    const generated_signature = crypto
+        .createHmac('sha256', 'YOUR_KEY_SECRET')
+        .update(`${razorpay_order_id}|${razorpay_payment_id}`)
+        .digest('hex');
+
+    if (generated_signature === razorpay_signature) {
+        res.status(200).json({ status: 'success' });
+    } else {
+        res.status(400).json({ status: 'failure' });
+    }
+});
 
 router.post('/protected', authMiddleware, (req, res) => {
 
@@ -41,10 +79,6 @@ router.post('/addproduct', async (req, res) => {
         else {
             id = 1;
         }
-        // if (!id || name || image || old_price || new_price || description || stock) {
-        //     return res.status(404).json({ message: "Please Fill ALL Fields" })
-        // }
-        // else {
         if (!req.body.name || !req.body.image || !req.body.old_price || !req.body.new_price || !req.body.description || !req.body.discount || !req.body.stock) {
             return res.status(400).json({ message: 'Please Fill ALl Fields' })
         }
@@ -104,11 +138,6 @@ router.post("/getuserdata", authMiddleware, async (req, res) => {
     res.status(200).json({ userData: req.user })
 })
 
-//get all items from cart(display)
-router.post('/getcart', authMiddleware, async (req, res) => {
-    let userData = await User.findOne({ _id: req.user._id });
-    res.json({ cart: userData.cartData, user: req.user, message: "Cart Data Found", success: true });
-})
 
 
 router.post('/transaction', authMiddleware, async (req, res) => {
@@ -134,5 +163,47 @@ router.post('/transaction', authMiddleware, async (req, res) => {
             res.status(404).json({ message: "error", err })
         }
     }
+})
+
+
+//add parents care
+router.post("/addparentscare", async (req, res) => {
+    const { medicinename, userId, time, relationType, phone } = req.body;
+    console.log("medicine name", userId)
+    const parentsTodoData = new ParentsCare({
+        userId: userId,
+        medicineName: medicinename,
+        time: time,
+        relationType: relationType,
+        mobileNumber: phone
+    });
+    try {
+        const newTodo = await parentsTodoData.save();
+        res.status(201).json({ success: true, message: "Task Will Added To database", newTodo });
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+
+})
+
+//get parents care data
+router.post("/parentscaredata", async (req, res) => {
+    console.log("backend", req.body)
+    const data = await ParentsCare.find({ userId: req.body.customerid });
+    console.log(data)
+    res.status(200).json({ message: "get all  parents care data", data })
+
+})
+
+//get all items from cart(display)
+router.post('/getcart', authMiddleware, async (req, res) => {
+    let userData = await User.findOne({ _id: req.user._id });
+    res.json({ cart: userData.cartData, user: req.user, message: "Cart Data Found", success: true });
+})
+
+
+router.get("/getalluser", async (req, res) => {
+    let userData = await User.find()
+    res.json({ message: "Get All User", userData })
 })
 module.exports = router;

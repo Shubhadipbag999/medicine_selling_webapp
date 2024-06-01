@@ -27,7 +27,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-
+    authority: {
+        type: Boolean,
+        // default: false
+    },
     cartData: {
         type: Object,
     },

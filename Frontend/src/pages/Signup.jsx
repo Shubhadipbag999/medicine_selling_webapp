@@ -15,9 +15,13 @@ const Signup = () => {
         email: "",
         phone: "",
         password: "",
-
-
+        authority: false
     })
+    const [isChecked, setIsChecked] = useState(false);
+
+    const handleCheckboxChange = (event) => {
+        setIsChecked(event.target.checked);
+    }
 
     const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -26,35 +30,95 @@ const Signup = () => {
     };
     const SubmitSignup = async (e) => {
         e.preventDefault();
+        console.log(isChecked)
+        if (isChecked) {
+            const comapanyData = {
+                name: data.name,
+                age: Number(data.age),
+                email: data.email,
+                phone: Number(data.phone),
+                address: data.address,
+                password: data.password,
+                authority: true
+            }
+            console.log("company")
+            try {
 
-        const newData = {
-            name: data.name,
-            age: Number(data.age),
-            email: data.email,
-            phone: Number(data.phone),
-            address: data.address,
-            password: data.password
+                const response = await axios.post("http://localhost:5000/api/auth/signup", comapanyData)
+                console.log(response)
+                toast.success("user added successfully")
+                setData({
+                    name: "",
+                    age: "",
+                    email: "",
+                    phone: "",
+                    address: "",
+                    password: "",
+                    authority: false
+                })
+                navigate("/login")
+            } catch (err) {
+                console.log(err.response.data.message)
+                toast.error(err.response.data.message)
+            }
+            console.log(comapanyData)
         }
-        console.log(newData)
-        try {
+        else {
+            const userData = {
+                name: data.name,
+                age: Number(data.age),
+                email: data.email,
+                phone: Number(data.phone),
+                address: data.address,
+                password: data.password,
+                authority: false
+            }
+            console.log(userData)
+            console.log("user")
+            try {
 
-            const response = await axios.post("http://localhost:5000/api/auth/signup", newData)
-            console.log(response)
-            toast.success("user added successfully")
-            setData({
-                name: "",
-                age: "",
-                email: "",
-                phone: "",
-                address: "",
-                password: "",
-            })
-            navigate("/login")
-        } catch (err) {
-            console.log(err.response.data.message)
-            toast.error(err.response.data.message)
+                const response = await axios.post("http://localhost:5000/api/auth/signup", userData)
+                console.log(response)
+                toast.success("user added successfully")
+                setData({
+                    name: "",
+                    age: "",
+                    email: "",
+                    phone: "",
+                    address: "",
+                    password: "",
+                    authority: false
+                })
+                navigate("/login")
+            } catch (err) {
+                console.log(err.response.data.message)
+                toast.error(err.response.data.message)
+            }
         }
     }
+
+    // console.log(newData.authority)
+    // console.log(newData)
+    // try {
+
+    //     const response = await axios.post("http://localhost:5000/api/auth/signup", newData)
+    //     console.log(response)
+    //     toast.success("user added successfully")
+    //     setData({
+    //         name: "",
+    //         age: "",
+    //         email: "",
+    //         phone: "",
+    //         address: "",
+    //         password: "",
+    //         authority: false
+    //     })
+    //     navigate("/login")
+    // } catch (err) {
+    //     console.log(err.response.data.message)
+    //     toast.error(err.response.data.message)
+    // }
+
 
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value });
@@ -104,6 +168,15 @@ const Signup = () => {
                     {passwordVisible ? <RemoveRedEyeIcon onClick={togglePasswordVisibility} className='eyeIcon' /> : <VisibilityOffIcon onClick={togglePasswordVisibility} className='eyeIcon' />}
                 </div>
 
+                <div className='isCompany'>
+                    <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={handleCheckboxChange}
+                        name="owner"
+                    />
+                    <p>Is Company??</p>
+                </div>
                 <button className='loginSignupBTN' onClick={SubmitSignup}>Signup Now</button>
 
                 <div className='already'>

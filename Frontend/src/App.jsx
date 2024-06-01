@@ -16,6 +16,12 @@ import Profile from './pages/Profile';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ShopByCatagory from './pages/ShopByCatagory';
+import Orderbycatagory from './pages/Orderbycatagory'
+import Manageuser from './pages/Manageuser';
+import Offers from './pages/Offers';
+import Offerforyou from './pages/Offerforyou';
+import Searchbyname from './pages/Searchbyname';
+
 
 function App() {
   return (
@@ -31,6 +37,7 @@ function App() {
 
           </Route>
           <Route path='/medicine/:productId' element={<Medicine />} />
+          <Route path='/medicines/:catagoryData' element={<Orderbycatagory />} />
           <Route path="/profile" element={<Profile />} />
           <Route path='/parentscare' element={<ParentsCare />} />
           <Route path='/cart' element={<Cart />} />
@@ -38,6 +45,10 @@ function App() {
           <Route path="/admin/addproduct" element={<AddNewProduct />} />
           <Route path='/contact' element={<Contact />} />
           <Route path="/medicines/bycatagory" element={<ShopByCatagory />} />
+          <Route path="/admin/manageusers" element={<Manageuser />}></Route>
+          <Route path="/medicines/medicineoffer" element={<Offers />} />
+          <Route path="/medicines/offersforyou" element={<Offerforyou />} />
+          <Route path="/searchbyname" element={<Searchbyname />} />
           {/* <Route element={<Notfound />}>
           </Route> */}
         </Routes>

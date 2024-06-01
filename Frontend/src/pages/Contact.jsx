@@ -1,5 +1,6 @@
 import React from 'react'
 import "./css/Contact.css"
+import { toast } from 'react-toastify'
 
 
 const Contact = () => {
@@ -53,7 +54,7 @@ const Contact = () => {
                                 <span>Type Your message....</span>
                             </div>
                             <div className="inputbox">
-                                <input type="submit" name="" value="send" />
+                                <input type="submit" name="" value="send" onClick={() => toast.success("Message is send to admin")} />
                             </div>
                         </from>
                     </div>

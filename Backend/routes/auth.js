@@ -14,7 +14,7 @@ router.get('/protected', authMiddleware, (req, res) => {
 
 router.post('/signup', async (req, res) => {
     try {
-        const { name, age, email, phone, password, address } = req.body;
+        const { name, age, email, phone, password, address, authority } = req.body;
         if (!name || !age || !email || !password || !phone || !address) {
             return res.status(404).json({ message: 'Please Fill All Required Fields' })
         }
@@ -23,7 +23,7 @@ router.post('/signup', async (req, res) => {
         for (let i = 0; i < 300; i++) {
             cart[i] = 0;
         }
-        const user = new User({ name, age, email, phone, address, password: hashedPassword, cartData: cart });
+        const user = new User({ name, age, email, phone, address, password: hashedPassword, authority, cartData: cart });
         await user.save();
         res.status(201).json({ message: 'User created successfully', user: user });
     } catch (error) {

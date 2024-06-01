@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 
 const Home = () => {
-    const { medicineData } = useContext(ShopContext)
+    const { medicineData, userData } = useContext(ShopContext)
     // console.log("`medicineData", medicineData[0].image)
     // const [data, setData] = useState(null);
     const navigate = useNavigate()
@@ -28,33 +28,32 @@ const Home = () => {
             <div className="nav-card-layout container">
                 <div>
                     <div>
-                        <img src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0" alt="" />
+                        <Link to="/medicines/medicineoffer">
+                            <img src="https://assets.pharmeasy.in/apothecary/images/medicine_ff.webp?dim=256x0" alt="" /></Link>
                         <h4>Medicines</h4>
+                        <p>Upto 25% off</p>
+                    </div>
+                    <div>
+                        <Link to="/medicines/homecare">
+                            <img src="https://assets.pharmeasy.in/apothecary/images/healthcare_ff.webp?dim=256x0" alt="" /></Link>
+                        <h4>Home Care</h4>
+                        <p>Upto 60% off</p>
+                    </div>
+                    <div>
+                        <Link to="/medicines/healthcaredevices">
+                            <img src="https://assets.pharmeasy.in/apothecary/images/labtest_ff.webp?dim=256x0" alt="" /></Link>
+                        <h4>Self Tests Kit</h4>
                         <p>Upto 50% off</p>
                     </div>
-                    <div>
-                        <img src="https://assets.pharmeasy.in/apothecary/images/healthcare_ff.webp?dim=256x0" alt="" />
-                        <h4>Health Care</h4>
-                        <p>Upto 80% off</p>
-                    </div>
-                    <div>
-                        <img src="https://assets.pharmeasy.in/apothecary/images/labtest_ff.webp?dim=256x0" alt="" />
-                        <h4>Lab Tests Kit</h4>
-                        <p>Upto 70% off</p>
-                    </div>
 
 
                     <div>
-                        <img src="https://assets.pharmeasy.in/apothecary/images/offers_ff.webp?dim=256x0" alt="" />
+                        <Link to="/medicines/offersforyou">
+                            <img src="https://assets.pharmeasy.in/apothecary/images/offers_ff.webp?dim=256x0" alt="" /></Link>
                         <h4>Offers</h4>
                         <p>Upto 50% off</p>
                     </div>
 
-                    <div>
-                        <img src="https://assets.pharmeasy.in/apothecary/images/value_store.png?dim=256x0" alt="" />
-                        <h4>Value Store</h4>
-                        <p>Upto 50% off</p>
-                    </div>
                 </div>
             </div>
 
@@ -62,18 +61,25 @@ const Home = () => {
             <div className="new-user-offer container">
                 <h1 className="title">offers Just For You</h1>
                 <div className="cards-layout">
-                    <div>
-                        <img src="https://cms-contents.pharmeasy.in/offer/37c262d84a5-25.jpg?dim=1024x0" alt="" />
-                        <p>Flat 25% off</p>
-                    </div>
-                    <div>
-                        <img src="https://cms-contents.pharmeasy.in/offer/81308cc59b5-FLAT_20.jpg?dim=1024x0" alt="" />
-                        <p>Test - Flat 20% off + up to Rs.1000 suprise cashback</p>
-                    </div>
-                    <div>
+                    <Link to="/medicines/medicineoffer">
+                        <div className='cards-layout-inner'>
+                            <img src="https://cms-contents.pharmeasy.in/offer/37c262d84a5-25.jpg?dim=1024x0" alt="" className='cards-layout-img' />
+                            <p style={{ textDecoration: "none", marginLeft: "10px" }}>Flat 25% off</p>
+                        </div>
+                    </Link>
+                    <Link to="/medicines">
+                        <div className='cards-layout-inner'>
+                            <img src="https://cms-contents.pharmeasy.in/offer/81308cc59b5-FLAT_20.jpg?dim=1024x0" alt="" className='cards-layout-img' />
+                            <p style={{ marginLeft: "10px" }}   >Test - Flat 20% off + up to Rs.1000 suprise cashback</p>
+                        </div>
+                    </Link>
+                    {!userData.name ? <div className='cards-layout-inner'>
                         <i className="fa-solid fa-lock"></i>
                         <p>Log in to view more offers</p>
-                    </div>
+                    </div> : <></>
+
+                    }
+
                 </div>
             </div>
 
@@ -85,33 +91,40 @@ const Home = () => {
                 <div>
 
                     <div>
-                        <img src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/b4a3a67a59783e0ca738884c9acc8e7b.png?f=png?dim=256x0"
-                            alt="" />
+                        <Link to="/medicines/personalcare">
+                            <img src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/b4a3a67a59783e0ca738884c9acc8e7b.png?f=png?dim=256x0"
+                                alt="" /></Link>
                         <h4>Personal Care</h4>
                     </div>
                     <div>
-                        <img src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/62e6d7551ecf3a5da1d2336c41cc0549.png?f=png?dim=256x0"
-                            alt="" />
+                        <Link to="/medicines/healthfoodanddrinks">
+                            <img src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/62e6d7551ecf3a5da1d2336c41cc0549.png?f=png?dim=256x0"
+                                alt="" /></Link>
                         <h4>Health Food and Drinks</h4>
                     </div>
                     <div>
-                        <img src="https://allibhavan.com/cdn/shop/collections/baby_care_-_baby_products.jpg?v=1666170648"
-                            alt="" className='imgBabyCare' />
+                        <Link to="/medicines/babycare">
+                            <img src="https://allibhavan.com/cdn/shop/collections/baby_care_-_baby_products.jpg?v=1666170648"
+                                alt="" className='imgBabyCare' /></Link>
                         <h4>Baby Care</h4>
                     </div>
                     <div>
-                        <img src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/ff5aaa03881e3016bf409f85b4e328aa.png?f=png?dim=256x"
-                            alt="" />
+                        <Link to="/medicines/skincare">
+                            <img src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/ff5aaa03881e3016bf409f85b4e328aa.png?f=png?dim=256x"
+                                alt="" /></Link>
                         <h4>Skin Care</h4>
                     </div>
                     <div>
-                        <img src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/68ae87e29f4a3abbb8ed69fe7ecf057c.png?f=png?dim=256x"
-                            alt="" />
+                        <Link to="/medicines/homecare">
+                            <img src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/68ae87e29f4a3abbb8ed69fe7ecf057c.png?f=png?dim=256x"
+                                alt="" /></Link>
                         <h4>Home Care</h4>
                     </div>
                     <div>
-                        <img src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/4209e1d247cd30fca1f619786fa3e9c1.png?f=png?dim=256x"
-                            alt="" />
+                        <Link to="/medicines/ayurveda">
+                            <img src="https://cdn01.pharmeasy.in/dam/discovery/categoryImages/4209e1d247cd30fca1f619786fa3e9c1.png?f=png?dim=256x"
+                                alt="" />
+                        </Link>
                         <h4>Ayurvedic</h4>
                     </div>
                 </div>
@@ -126,7 +139,7 @@ const Home = () => {
                     <div>
                         <h3>Order With Prescription(Coming Soon...)</h3>
                         <p>Upload prescription and we will deliver your medicine</p>
-                        <button disabled>
+                        <button onClick={() => toast.warning("This Features Will Added Soon!")}>
                             <i className="fa-solid fa-paperclip"></i>
                             Upload
                         </button>
@@ -176,65 +189,66 @@ const Home = () => {
             </div>
 
             {/* hot deals */}
-            {medicineData[0].name ? <div className="deals-of-the-day container">
-                <h1 className="title">Deals of the day <spam className="timer"><i className="fa-regular fa-clock"> 06:00 HOURS LEFT,
-                    HURRY!</i></spam><span className="view-all" onClick={() => navigate("/medicines")}>View-All</span></h1>
-                <div className="product-cards2">
-                    <div>
-                        <Link to={`/medicine/${medicineData[15].id}`} className='linktag'>
-                            <img src={medicineData[15].image}
-                                alt="" />
-                        </Link>
-                        <h6>{medicineData[15].name}</h6>
-                        <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[15].old_price}</span></p>
-                        <p>₹{medicineData[15].new_price}<span className="discount"> ({medicineData[15].discount}% OFF)</span></p>
-                    </div>
-                    <div>
-                        <Link to={`/medicine/${medicineData[1].id}`} className='linktag'>
-                            <img src={medicineData[1].image}
-                                alt="" /></Link>
-                        <h6>{medicineData[1].name}</h6>
-                        <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[1].old_price}</span></p>
-                        <p>₹{medicineData[1].new_price}<span className="discount"> ({medicineData[1].discount}% OFF)</span></p>
-                    </div>
-                    <div>
-                        <Link to={`/medicine/${medicineData[33].id}`} className='linktag'>
-                            <img src={medicineData[33].image}
-                                alt="" /></Link>
-                        <h6>{medicineData[33].name}</h6>
-                        <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[33].old_price}</span></p>
-                        <p>₹{medicineData[33].new_price}<span className="discount"> ({medicineData[33].discount}% OFF)</span></p>
-                    </div>
-                    <div>
-                        <Link to={`/medicine/${medicineData[3].id}`} className='linktag'>
-                            <img src={medicineData[3].image}
-                                alt="" /></Link>
-                        <h6>{medicineData[3].name}</h6>
-                        <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[3].old_price}</span></p>
-                        <p>₹{medicineData[3].new_price}<span className="discount"> ({medicineData[3].discount}% OFF)</span></p>
-                    </div>
-                    <div>
-                        <Link to={`/medicine/${medicineData[4].id}`} className='linktag'>
-                            <img src={medicineData[4].image}
-                                alt="" /></Link>
-                        <h6>{medicineData[4].name}</h6>
-                        <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[4].old_price}</span></p>
-                        <p>₹{medicineData[4].new_price}<span className="discount"> ({medicineData[4].discount}% OFF)</span></p>
-                    </div>
-                    <div>
-                        <Link to={`/medicine/${medicineData[5].id}`} className='linktag'>
-                            <img src={medicineData[5].image}
-                                alt="" /></Link>
-                        <h6>{medicineData[5].name}</h6>
-                        <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[5].old_price}</span></p>
-                        <p>₹{medicineData[5].new_price}<span className="discount"> ({medicineData[5].discount}% OFF)</span></p>
+            {
+                medicineData[0].name ? <div className="deals-of-the-day container">
+                    <h1 className="title">Deals of the day <spam className="timer"><i className="fa-regular fa-clock"> 06:00 HOURS LEFT,
+                        HURRY!</i></spam><span className="view-all" onClick={() => navigate("/medicines")}>View-All</span></h1>
+                    <div className="product-cards2">
+                        <div>
+                            <Link to={`/medicine/${medicineData[15].id}`} className='linktag'>
+                                <img src={medicineData[15].image}
+                                    alt="" />
+                            </Link>
+                            <h6>{medicineData[15].name}</h6>
+                            <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[15].old_price}</span></p>
+                            <p className='discountAmount'>₹{medicineData[15].new_price}<span className="discountPercent"> ({medicineData[15].discount}% OFF)</span></p>
+                        </div>
+                        <div>
+                            <Link to={`/medicine/${medicineData[1].id}`} className='linktag'>
+                                <img src={medicineData[1].image}
+                                    alt="" /></Link>
+                            <h6>{medicineData[1].name}</h6>
+                            <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[1].old_price}</span></p>
+                            <p className='discountAmount'>₹{medicineData[1].new_price}<span className="discountPercent"> ({medicineData[1].discount}% OFF)</span></p>
+                        </div>
+                        <div>
+                            <Link to={`/medicine/${medicineData[33].id}`} className='linktag'>
+                                <img src={medicineData[33].image}
+                                    alt="" /></Link>
+                            <h6>{medicineData[33].name}</h6>
+                            <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[33].old_price}</span></p>
+                            <p className='discountAmount'>₹{medicineData[33].new_price}<span className="discountPercent"> ({medicineData[33].discount}% OFF)</span></p>
+                        </div>
+                        <div>
+                            <Link to={`/medicine/${medicineData[3].id}`} className='linktag'>
+                                <img src={medicineData[3].image}
+                                    alt="" /></Link>
+                            <h6>{medicineData[3].name}</h6>
+                            <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[3].old_price}</span></p>
+                            <p className='discountAmount'>₹{medicineData[3].new_price}<span className="discountPercent"> ({medicineData[3].discount}% OFF)</span></p>
+                        </div>
+                        <div>
+                            <Link to={`/medicine/${medicineData[4].id}`} className='linktag'>
+                                <img src={medicineData[4].image}
+                                    alt="" /></Link>
+                            <h6>{medicineData[4].name}</h6>
+                            <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[4].old_price}</span></p>
+                            <p className='discountAmount'>₹{medicineData[4].new_price}<span className="discountPercent"> ({medicineData[4].discount}% OFF)</span></p>
+                        </div>
+                        <div>
+                            <Link to={`/medicine/${medicineData[5].id}`} className='linktag'>
+                                <img src={medicineData[5].image}
+                                    alt="" /></Link>
+                            <h6>{medicineData[5].name}</h6>
+                            <p>MRP: ₹<span className="MRP-with-stroke">{medicineData[5].old_price}</span></p>
+                            <p className='discountAmount'>₹{medicineData[5].new_price}<span className="discountPercent"> ({medicineData[5].discount}% OFF)</span></p>
+                        </div>
+
                     </div>
 
-                </div>
 
 
-
-            </div> : <></>
+                </div> : <></>
             }
 
             <div className="shop-by-concern container">
@@ -419,7 +433,7 @@ const Home = () => {
 
             </div>
 
-        </div>
+        </div >
 
 
     )

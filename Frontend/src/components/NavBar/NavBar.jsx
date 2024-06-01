@@ -1,14 +1,18 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useReducer } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import './NavBar.css';
 import logo from '../assets/sell_logo.png';
 import cart_icon from '../assets/cart_icon.png';
 import { ShopContext } from '../../context/ShopContext'
+import SearchIcon from '@mui/icons-material/Search';
 const NavBar = () => {
 
     const { knowCOunt, userData } = useContext(ShopContext)
     const [user, setUser] = useState(userData)
+    const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
+    const navigate = useNavigate()
     useEffect(() => {
         const fetchdata = async () => {
             if (localStorage.getItem('token')) {
@@ -27,10 +31,9 @@ const NavBar = () => {
 
                     .then((res) => {
 
-                        // console.log(res.data.cart)
-                        // authinticated = true;
+
                         setUser(res.data.user)
-                        // setCartitem(res.data.cart)
+
                         console.log("user data Presnt", userData)
                     })
 
@@ -42,7 +45,7 @@ const NavBar = () => {
             }
         }
         fetchdata()
-    }, [])
+    }, [ignored])
     const [menu, setMenu] = useState("Home");
 
     const loginNow = () => {
@@ -54,6 +57,8 @@ const NavBar = () => {
         console.log("Logout")
         localStorage.removeItem('token')
     }
+
+
     return (
         <div className='navbar'>
             <div className='navbar-logo'>
@@ -72,20 +77,37 @@ const NavBar = () => {
 
                 {user.name ? <li onClick={() => setMenu("Profile")}>
                     <Link to="/profile" className='link'>
-                        Profile{menu == "Profie" ? <hr /> : <></>}</Link></li> : <></>}
-                {user.owner != true ? <>
+                        Profile{menu == "Profile" ? <hr /> : <></>}</Link></li> : <></>}
+                {user.authority == false ? <>
                     <li onClick={() => setMenu("Parents Care")}>
                         <Link to="/parentscare" className='link'>
                             Parents Care{menu == "Parents Care" ? <hr /> : <></>}</Link></li>
+                </> : <></>}
+                {!user.authority == true ? <>
+
                     <li onClick={() => setMenu("About")}>
                         <Link to="/about" className='link'>
                             About{menu == "About" ? <hr /> : <></>}</Link></li>
                     <li onClick={() => setMenu("Contact")}>
                         <Link to="/contact" className='link'>Contact{menu == "Contact" ? <hr /> : <></>}</Link></li>
-                </> : <><li onClick={() => setMenu("Contact")}>
+                </> : <><li onClick={() => setMenu("Addproduct")}>
                     <Link to="/admin/addproduct" className='link'>Add New Product{menu == "Addproduct" ? <hr /> : <></>}</Link></li></>}
 
+                {
+                    !user.owner == false ? <li onClick={() => setMenu("Manageuser")}>
+                        <Link to="/admin/manageusers" className='link'>
+                            Manage  User{menu == "Manageuser" ? <hr /> : <></>}</Link></li> : <></>
+
+                }
+
             </ul>
+
+            {
+                !user.authority == true ?
+                    <SearchIcon onClick={() => navigate("/searchbyname")} style={{ cursor: "pointer", marginLeft: "20px" }} />
+                    : <></>
+            }
+
             <div className='nav-login-cart'>
                 {!user.name ?
                     <Link to="/login"><button className='login-button' onClick={loginNow}>Login</button></Link> :
@@ -93,7 +115,7 @@ const NavBar = () => {
 
                 }
                 {
-                    !user.owner ? <>
+                    user.authority == false ? <>
                         <Link to="/cart"><img src={cart_icon} alt="cart-icon" className='cartIcon' /></Link>
                         <Link to="/cart"><div className='cart-count'>{knowCOunt()}</div></Link>
                     </> : <></>

@@ -1,0 +1,39 @@
+.searchMainContainer {
+  height: 87vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(64, 223, 238, 0.6);
+}
+
+.medicinesearchbox {
+  height: 8vh;
+  width: 60vw;
+  text-align: center;
+  margin-bottom: 3vh;
+  text-decoration: none;
+  outline: none;
+  border-radius: 15px;
+  background-color: rgb(245, 246, 237);
+  font-size: 20px;
+  border: 1px sold black;
+}
+
+.searchButton {
+  height: 8vh;
+  width: 20vw;
+  cursor: pointer;
+  font-size: 17px;
+  /* font-weight: bold; */
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  border-radius: 15px;
+  background-color: rgb(128, 215, 40);
+  border: none !important;
+}
+
+.searchButton:hover {
+  font-size: 18px;
+}
